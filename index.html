@@ -1,41 +1,56 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Test Web-to-Case Form</title>
-</head>
-<body>
-  <h2>Submit a Support Request</h2>
-  <form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8" method="POST">
+<!--  ----------------------------------------------------------------------  -->
+<!--  NOTE: Please add the following <META> element to your page <HEAD>.      -->
+<!--  If necessary, please modify the charset parameter to specify the        -->
+<!--  character set of your HTML page.                                        -->
+<!--  ----------------------------------------------------------------------  -->
 
-    <!-- Replace with your Salesforce Org ID -->
-    <input type="hidden" name="orgid" value="00D3N0000008qMy">
-    <!-- Redirect URL after submission -->
-    <input type="hidden" name="retURL" value="https://<your-username>.github.io/web2case-test/thankyou.html" />
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
 
+<!--  ----------------------------------------------------------------------  -->
+<!--  NOTE: Please add the following <FORM> element to your page.             -->
+<!--  ----------------------------------------------------------------------  -->
 
-    <label for="name">Contact Name:</label><br>
-    <input type="text" id="name" name="name"><br><br>
+<form
+  action="https://zurichcx--dev3.sandbox.my.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00D3N0000008qMy"
+  method="POST"
+>
+  <input type="hidden" name="orgid" value="00D3N0000008qMy" />
+  <input type="hidden" name="retURL" value="https://pdas007.github.io/web2case-test/thankyou.html" />
 
-    <label for="email">Email:</label><br>
-    <input type="text" id="email" name="email"><br><br>
+  <!--  ----------------------------------------------------------------------  -->
+  <!--  NOTE: These fields are optional debugging elements. Please uncomment    -->
+  <!--  these lines if you wish to test in debug mode.                          -->
+  <!--  <input type="hidden" name="debug" value=1>                              -->
+  <!--  <input type="hidden" name="debugEmail" value="pallab.das@zurich.com">   -->
+  <!--  ----------------------------------------------------------------------  -->
 
-    <label for="subject">Subject:</label><br>
-    <input type="text" id="subject" name="subject"><br><br>
+  <label for="name">Contact Name</label
+  ><input id="name" maxlength="80" name="name" size="20" type="text" /><br />
 
-    <label for="description">Description:</label><br>
-    <textarea id="description" name="description"></textarea><br><br>
+  <label for="email">Email</label
+  ><input id="email" maxlength="80" name="email" size="20" type="text" /><br />
 
-    <label for="priority">Priority:</label><br>
+  <label for="phone">Phone</label
+  ><input id="phone" maxlength="40" name="phone" size="20" type="text" /><br />
+
+  <label for="subject">Subject</label
+  ><input
+    id="subject"
+    maxlength="80"
+    name="subject"
+    size="20"
+    type="text"
+  /><br />
+
+  <label for="description">Description</label
+  ><textarea name="description"></textarea><br />
+
+   <label for="priority">Priority:</label><br>
     <select id="priority" name="priority">
       <option value="Low">Low</option>
       <option value="Medium">Medium</option>
       <option value="High">High</option>
     </select><br><br>
 
-    <input type="submit" value="Submit Case">
-  </form>
-</body>
-</html>
-
-
-
+  <input type="submit" name="submit" />
+</form>
