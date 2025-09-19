@@ -1,56 +1,109 @@
-<!--  ----------------------------------------------------------------------  -->
-<!--  NOTE: Please add the following <META> element to your page <HEAD>.      -->
-<!--  If necessary, please modify the charset parameter to specify the        -->
-<!--  character set of your HTML page.                                        -->
-<!--  ----------------------------------------------------------------------  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web-to-Case Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
 
-<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+    .form-container {
+      background: #fff;
+      padding: 25px 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      width: 400px;
+    }
 
-<!--  ----------------------------------------------------------------------  -->
-<!--  NOTE: Please add the following <FORM> element to your page.             -->
-<!--  ----------------------------------------------------------------------  -->
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #004481;
+    }
 
-<form
-  action="https://zurichcx--dev3.sandbox.my.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00D3N0000008qMy"
-  method="POST"
->
-  <input type="hidden" name="orgid" value="00D3N0000008qMy" />
-  <input type="hidden" name="retURL" value="https://pdas007.github.io/web2case-test/thankyou.html" />
+    label {
+      font-weight: bold;
+      display: block;
+      margin: 10px 0 5px;
+      color: #333;
+    }
 
-  <!--  ----------------------------------------------------------------------  -->
-  <!--  NOTE: These fields are optional debugging elements. Please uncomment    -->
-  <!--  these lines if you wish to test in debug mode.                          -->
-  <!--  <input type="hidden" name="debug" value=1>                              -->
-  <!--  <input type="hidden" name="debugEmail" value="pallab.das@zurich.com">   -->
-  <!--  ----------------------------------------------------------------------  -->
+    input[type="text"],
+    input[type="email"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
 
-  <label for="name">Contact Name</label
-  ><input id="name" maxlength="80" name="name" size="20" type="text" /><br />
+    textarea {
+      resize: vertical;
+    }
 
-  <label for="email">Email</label
-  ><input id="email" maxlength="80" name="email" size="20" type="text" /><br />
+    .submit-btn {
+      width: 100%;
+      padding: 12px;
+      margin-top: 20px;
+      background-color: #004481;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
 
-  <label for="phone">Phone</label
-  ><input id="phone" maxlength="40" name="phone" size="20" type="text" /><br />
+    .submit-btn:hover {
+      background-color: #006bb3;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Submit a Case</h2>
+    <form
+      action="https://zurichcx--dev3.sandbox.my.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00D3N0000008qMy"
+      method="POST"
+    >
+      <input type="hidden" name="orgid" value="00D3N0000008qMy" />
+      <input type="hidden" name="retURL" value="https://pdas007.github.io/web2case-test/thankyou.html" />
 
-  <label for="subject">Subject</label
-  ><input
-    id="subject"
-    maxlength="80"
-    name="subject"
-    size="20"
-    type="text"
-  /><br />
+      <label for="name">Contact Name</label>
+      <input id="name" maxlength="80" name="name" type="text" />
 
-  <label for="description">Description</label
-  ><textarea name="description"></textarea><br />
+      <label for="email">Email</label>
+      <input id="email" maxlength="80" name="email" type="email" />
 
-   <label for="priority">Priority:</label><br>
-    <select id="priority" name="priority">
-      <option value="Low">Low</option>
-      <option value="Medium">Medium</option>
-      <option value="High">High</option>
-    </select><br><br>
+      <label for="phone">Phone</label>
+      <input id="phone" maxlength="40" name="phone" type="text" />
 
-  <input type="submit" name="submit" />
-</form>
+      <label for="subject">Subject</label>
+      <input id="subject" maxlength="80" name="subject" type="text" />
+
+      <label for="description">Description</label>
+      <textarea id="description" name="description" rows="4"></textarea>
+
+      <label for="priority">Priority</label>
+      <select id="priority" name="priority">
+        <option value="Low">Low</option>
+        <option value="Medium">Medium</option>
+        <option value="High">High</option>
+      </select>
+
+      <button type="submit" class="submit-btn">Submit Case</button>
+    </form>
+  </div>
+</body>
+</html>
